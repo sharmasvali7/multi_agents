@@ -1,0 +1,23 @@
+TechMart Electronics — Products & Pricing
+
+1. Product Categories
+TechMart sells smartphones, laptops, smartwatches, wireless earbuds, home audio systems, and smart home devices.
+
+2. Featured Products
+- TechMart Buds Pro (wireless earbuds): ₹2,499. Active noise cancellation, 30-hour battery life with case, IPX5 water resistance.
+- TechMart Watch S2 (smartwatch): ₹4,999. Heart rate and SpO2 monitoring, 7-day battery, AMOLED display.
+- TechMart Air 14 (laptop): ₹54,999. Intel Core i5, 16GB RAM, 512GB SSD, 14-inch FHD display.
+- TechMart Pulse 5G (smartphone): ₹18,999. 6.7-inch AMOLED display, 5000mAh battery, 108MP camera.
+- TechMart Home Speaker Mini: ₹1,999. Voice assistant support, Wi-Fi and Bluetooth connectivity.
+
+3. Price Match Policy
+If you find an identical, in-stock product at a lower price on another authorized retailer's website within 7 days of your purchase, TechMart will refund the difference upon verification.
+
+4. Bulk & Corporate Pricing
+Orders of 10 or more units qualify for corporate pricing. Contact corporate-sales@techmart.example for a custom quote.
+
+5. Product Comparisons
+Product comparison charts are available on each category page, allowing side-by-side comparison of specifications, price, and customer ratings across up to 4 products at once.
+
+6. Availability
+Stock availability is shown in real time on each product page. Customers can opt in for "Notify Me" alerts when an out-of-stock item is restocked.

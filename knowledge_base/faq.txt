@@ -1,0 +1,28 @@
+TechMart Electronics — Frequently Asked Questions
+
+Q: What are your customer support hours?
+A: Our support team is available Monday to Saturday, 9 AM to 9 PM IST. Email support is monitored 24/7 with a response time of under 24 hours.
+
+Q: How do I create an account?
+A: Click "Sign Up" on the top right of the website, enter your email and a password, and verify your email via the confirmation link we send you.
+
+Q: Do you offer international shipping?
+A: Currently we ship only within India. International shipping is planned for late 2027.
+
+Q: How can I track my order?
+A: Go to "My Orders" in your account dashboard and click "Track Package" next to the relevant order. You will also receive tracking updates by email and SMS.
+
+Q: What payment methods do you accept?
+A: We accept credit cards, debit cards, UPI, net banking, and TechMart Wallet. EMI options are available on orders above ₹3000.
+
+Q: Is my payment information secure?
+A: Yes. All payments are processed through PCI-DSS compliant gateways and we never store your full card number on our servers.
+
+Q: How do I contact a human agent?
+A: If our AI assistant cannot resolve your issue, type "talk to a human" or "escalate" at any point and your conversation will be handed off to our support team with full context.
+
+Q: Do you have a mobile app?
+A: Yes, TechMart is available on both Android and iOS. Search "TechMart Electronics" in the Play Store or App Store.
+
+Q: What is TechMart Premium?
+A: TechMart Premium is our subscription plan (₹199/month) offering free express shipping, extended warranty on all purchases, and early access to sales.
