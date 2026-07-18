@@ -1,2 +1,85 @@
-1 of 35
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <title>TechMart Support</title> <script>window.TECHMART_API_BASE = "https://multi-agents-81mh.onrender.com";</script> </head> <body> <h1>TechMart Support</h1> <div id="chat"></div> <div id="suggestions"> <div class="chip" data-q="I paid for Premium yesterday but it's still locked.">Premium not unlocking</div> <div class="chip" data-q="What's your return and refund policy?">Refund policy</div> <div class="chip" data-q="How long is the warranty on the TechMart Watch S2?">Warranty question</div> <div class="chip" data-q="This is the third time my issue hasn't been resolved.">File a complaint</div> </div> <form id="chat-form"> <input type="text" id="input" placeholder="Describe your issue…" autocomplete="off" /> <button type="submit" id="send-btn">Send</button> </form> <script> const API_BASE = window.TECHMART_API_BASE || "http://localhost:8000"; const chat = document.getElementById("chat"); const form = .
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>TechMart Support</title>
+<script>window.TECHMART_API_BASE = "https://multi-agents-81mh.onrender.com";</script>
+</head>
+<body>
+<h1>TechMart Support</h1>
+<div id="chat"></div>
+<div id="suggestions">
+  <div class="chip" data-q="I paid for Premium yesterday but it's still locked.">Premium not unlocking</div>
+  <div class="chip" data-q="What's your return and refund policy?">Refund policy</div>
+  <div class="chip" data-q="How long is the warranty on the TechMart Watch S2?">Warranty question</div>
+  <div class="chip" data-q="This is the third time my issue hasn't been resolved.">File a complaint</div>
+</div>
+<form id="chat-form">
+  <input type="text" id="input" placeholder="Describe your issue…" autocomplete="off" />
+  <button type="submit" id="send-btn">Send</button>
+</form>
+<script>
+  const API_BASE = window.TECHMART_API_BASE || "http://localhost:8000";
+  const chat = document.getElementById("chat");
+  const form = document.getElementById("chat-form");
+  const input = document.getElementById("input");
+  const sendBtn = document.getElementById("send-btn");
+  const suggestions = document.getElementById("suggestions");
+  let sessionId = localStorage.getItem("techmart_session_id") || null;
+
+  function addMessage(role, text, meta) {
+    const wrap = document.createElement("div");
+    wrap.className = `msg ${role}`;
+    const bubble = document.createElement("div");
+    bubble.className = "bubble";
+    bubble.textContent = text;
+    wrap.appendChild(bubble);
+    if (meta) {
+      const metaEl = document.createElement("div");
+      metaEl.className = "meta";
+      metaEl.innerHTML = meta;
+      wrap.appendChild(metaEl);
+    }
+    chat.appendChild(wrap);
+    chat.scrollTop = chat.scrollHeight;
+  }
+
+  async function sendMessage(text) {
+    if (!text.trim()) return;
+    addMessage("user", text);
+    input.value = "";
+    sendBtn.disabled = true;
+    try {
+      const res = await fetch(`${API_BASE}/chat`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: text, session_id: sessionId }),
+      });
+      if (!res.ok) throw new Error(`Server responded ${res.status}`);
+      const data = await res.json();
+      sessionId = data.session_id;
+      localStorage.setItem("techmart_session_id", sessionId);
+      const tags = data.intents.map(i => `<span class="tag">${i}</span>`).join("");
+      addMessage("assistant", data.final_answer, `Routed to: ${tags}`);
+    } catch (err) {
+      addMessage("assistant", `Connection error: ${err.message}. Is the backend running at ${API_BASE}?`);
+    } finally {
+      sendBtn.disabled = false;
+      input.focus();
+    }
+  }
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    sendMessage(input.value);
+  });
+
+  suggestions.addEventListener("click", (e) => {
+    const chip = e.target.closest(".chip");
+    if (chip) sendMessage(chip.dataset.q);
+  });
+
+  addMessage("assistant", "Hi, I'm the TechMart support assistant. Ask me about billing, orders, technical issues, products, or anything else — I'll route you to the right specialist.");
+</script>
+</body>
+</html>
